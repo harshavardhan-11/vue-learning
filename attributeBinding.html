@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attribute Binding</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: grid;
+            place-items: center;
+        }
+
+        .text-red {
+            color: red;
+        }
+
+        .text-green {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button :class="buttonActiveState? 'text-red' : 'text-green'" @click="toggle">
+            Toggle Color
+        </button>
+    </div>
+
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    buttonActiveState : false
+                };
+            },
+            methods: {
+                toggle() {
+                    this.buttonActiveState = !this.buttonActiveState;
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+</html>
